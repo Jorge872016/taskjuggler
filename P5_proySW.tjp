@@ -69,6 +69,15 @@ resource dev3 "Peter Green" {
   email "kkk@unizar.es"
 }
 
+/* Mío */
+
+resource jorge "Jorge Soria Romeo" {
+  email "872016@unizar.es"
+  rate 4
+}
+
+/* Fin mío */
+
 
 # Now we specify the work packages. The whole project is described as
 # a task that contains subtasks. These subtasks are then broken down
@@ -207,13 +216,13 @@ task mobFGame "Mobile Front End Game" {
   
   task tFEc "Mobile Front End Construction" {
     effort 15d
-    allocate dev2, dev3
+    allocate dev2, dev3, jorge
     depends mobFGame.tGUId
   }
   
   task tFEt "Web Front End Test" {
     effort 6d
-    allocate dev1
+    allocate dev1, jorge
     depends mobFGame.tFEc
   }
 }
@@ -240,7 +249,7 @@ task desplB "Back End Deployment" {
   task tDespCloud "Cloud Deployment" {
     effort 7d
     actual: effort 8d
-    allocate dev1
+    allocate dev1, jorge
     depends desplB.tDecCloud
   }
 }
