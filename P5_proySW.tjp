@@ -203,13 +203,13 @@ task mobFGame "Mobile Front End Game" {
   task tFEc "Mobile Front End Construction" {
     effort 15d
     allocate dev2, dev3
-    depends WMGame.mobFGame.tGUId
+    depends mobFGame.tGUId
   }
   
   task tFEt "Web Front End Test" {
     effort 6d
     allocate dev1
-    depends WMGame.mobFGame.tFEc
+    depends mobFGame.tFEc
   }
 }
 
