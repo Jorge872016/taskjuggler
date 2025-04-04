@@ -223,7 +223,6 @@ task desplB "Back End Deployment" {
     effort 3d
     actual: effort 3d
     allocate dev3
-    depends WMGame.tback.tBEd
   }
   
   task tDecCloud "Cloud Decision" {
