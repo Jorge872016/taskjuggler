@@ -105,18 +105,21 @@ task desplB "Back End Deployment" {
   task tEvalCloud "Cloud Evaluation" {
     effort 3d
     actual: effort 3d
+    allocate deb3
     depends WMGame.desplB
   }
   
   task tDecCloud "Cloud Decision" {
     effort 3d
     actual: effort 4d
+    allocate dev2, dev3
     depends WMGame.desplB.tEvalCloud
   }
   
   task tDespCloud "Cloud Deployment" {
     effort 7d
     actual: effort 8d
+    allocate dev1
     depends WMGame.desplB.tDecCloud
   }
 }
@@ -207,6 +210,7 @@ task WMGame "Web & Mobile Game" {
       allocate boss
       allocate dev2
       actual:effort 20d
+      start 2025-05-15
       depends WMGame.twebF
       depends WMGame.tback
       }
