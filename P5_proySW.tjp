@@ -19,7 +19,7 @@ project pSix "Web Game"  2024-12-15 +6m {
   # the project reports. If not specified, the current day will be
   # used, but this will likely be outside of the project range, so it
   # can't be seen in the reports.
-  now 2025-02-25-13:00
+  now 2025-04-04-17:15
   # The currency for all money values is the US Dollar.
   currency "EUR"
 
@@ -198,6 +198,11 @@ task mobFGame "Mobile Front End Game" {
     effort 9d
     actual: effort 15d
     allocate dev3
+    journalentry 2025-04-04 "Issue with the GUI design tool" {
+      author dev3
+      alert yellow
+      summary "We need to update the GUI design tool being used."
+    }
   }
   
   task tFEc "Mobile Front End Construction" {
@@ -240,6 +245,21 @@ task desplB "Back End Deployment" {
   }
 }
 
+taskreport initialPlan "Initial Plan Project" {
+  scenarios actual
+  headline "Project Initial Planning"
+  columns bsi { title 'WBS' },
+          name, start, end, effort, cost,
+          revenue, chart { ${TaskTip} }
+  # For this report we like to have the abbreviated weekday in front
+  # of the date. %a is the tag for this.
+  timeformat "%a %Y-%m-%d"
+  loadunit days
+  hideresource @all
+  balance cost rev
+  caption 'All effort values are in man days.'
+}
+
 /* Fin mío */
 
 # Now the project has been specified completely. Stopping here would
@@ -280,6 +300,11 @@ textreport frame "" {
   textreport overvi "Overview" {
     formats html
     center '<[report id="overview"]>'
+  }
+  
+  textreport initplan "Initial Plan" {
+    formats html
+    center '<[report id="initialPlan"]>'
   }
   
   textreport "Status" {
