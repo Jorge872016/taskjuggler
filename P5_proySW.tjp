@@ -229,14 +229,14 @@ task desplB "Back End Deployment" {
     effort 3d
     actual: effort 4d
     allocate dev2, dev3
-    depends WMGame.desplB.tEvalCloud
+    depends desplB.tEvalCloud
   }
   
   task tDespCloud "Cloud Deployment" {
     effort 7d
     actual: effort 8d
     allocate dev1
-    depends WMGame.desplB.tDecCloud
+    depends desplB.tDecCloud
   }
 }
 
