@@ -69,63 +69,6 @@ resource dev3 "Peter Green" {
   email "kkk@unizar.es"
 }
 
-/* Mío */
-
-task mobFGame "Mobile Front End Game" {
-  purge chargeset
-  chargeset mFront
-  responsible dev3
-  depends WMGame.mobFGame.tBEd
-  
-  task tGUId "Mobile GUI Design" {
-    effort 9d
-    actual: effort 15d
-    allocate dev3
-  }
-  
-  task tFEc "Mobile Front End Construction" {
-    effort 15d
-    allocate dev2, dev3
-    depends WMGame.mobFGame.tGUId
-  }
-  
-  task tFEt "Web Front End Test" {
-    effort 6d
-    allocate dev1
-    depends WMGame.mobFGame.tFEc
-  }
-}
-
-task desplB "Back End Deployment" {
-  purge chargeset
-  chargeset back
-  responsible dev3
-  depends WMGame.desplB
-  
-  task tEvalCloud "Cloud Evaluation" {
-    effort 3d
-    actual: effort 3d
-    allocate dev3
-    depends WMGame.desplB
-  }
-  
-  task tDecCloud "Cloud Decision" {
-    effort 3d
-    actual: effort 4d
-    allocate dev2, dev3
-    depends WMGame.desplB.tEvalCloud
-  }
-  
-  task tDespCloud "Cloud Deployment" {
-    effort 7d
-    actual: effort 8d
-    allocate dev1
-    depends WMGame.desplB.tDecCloud
-  }
-}
-
-/* Fin mío */
-
 
 # Now we specify the work packages. The whole project is described as
 # a task that contains subtasks. These subtasks are then broken down
@@ -242,6 +185,63 @@ task WMGame "Web & Mobile Game" {
     }
   }
 }
+
+/* Mío */
+
+task mobFGame "Mobile Front End Game" {
+  purge chargeset
+  chargeset mFront
+  responsible dev3
+  depends WMGame.mobFGame.tBEd
+  
+  task tGUId "Mobile GUI Design" {
+    effort 9d
+    actual: effort 15d
+    allocate dev3
+  }
+  
+  task tFEc "Mobile Front End Construction" {
+    effort 15d
+    allocate dev2, dev3
+    depends WMGame.mobFGame.tGUId
+  }
+  
+  task tFEt "Web Front End Test" {
+    effort 6d
+    allocate dev1
+    depends WMGame.mobFGame.tFEc
+  }
+}
+
+task desplB "Back End Deployment" {
+  purge chargeset
+  chargeset back
+  responsible dev3
+  depends WMGame.desplB
+  
+  task tEvalCloud "Cloud Evaluation" {
+    effort 3d
+    actual: effort 3d
+    allocate dev3
+    depends WMGame.desplB
+  }
+  
+  task tDecCloud "Cloud Decision" {
+    effort 3d
+    actual: effort 4d
+    allocate dev2, dev3
+    depends WMGame.desplB.tEvalCloud
+  }
+  
+  task tDespCloud "Cloud Deployment" {
+    effort 7d
+    actual: effort 8d
+    allocate dev1
+    depends WMGame.desplB.tDecCloud
+  }
+}
+
+/* Fin mío */
 
 # Now the project has been specified completely. Stopping here would
 # result in a valid TaskJuggler file that could be processed and
