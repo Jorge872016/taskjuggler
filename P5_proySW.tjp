@@ -105,7 +105,7 @@ task desplB "Back End Deployment" {
   task tEvalCloud "Cloud Evaluation" {
     effort 3d
     actual: effort 3d
-    allocate deb3
+    allocate dev3
     depends WMGame.desplB
   }
   
