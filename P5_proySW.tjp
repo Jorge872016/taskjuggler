@@ -192,7 +192,7 @@ task mobFGame "Mobile Front End Game" {
   purge chargeset
   chargeset mFront
   responsible dev3
-  depends WMGame.mobFGame.tBEd
+  depends WMGame.tback.tBEd
   
   task tGUId "Mobile GUI Design" {
     effort 9d
@@ -217,13 +217,13 @@ task desplB "Back End Deployment" {
   purge chargeset
   chargeset back
   responsible dev3
-  depends WMGame.desplB
+  depends WMGame.tback.tBEd
   
   task tEvalCloud "Cloud Evaluation" {
     effort 3d
     actual: effort 3d
     allocate dev3
-    depends WMGame.desplB
+    depends WMGame.tback.tBEd
   }
   
   task tDecCloud "Cloud Decision" {
